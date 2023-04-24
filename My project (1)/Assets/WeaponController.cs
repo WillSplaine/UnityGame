@@ -7,6 +7,7 @@ public class WeaponController : MonoBehaviour
 {
     [Header("Gun Settings")]
     public float fireRate = 0.1f;
+
     public int magCap = 30;
     public int maxAmmoHeld = 180;
 
@@ -18,8 +19,12 @@ public class WeaponController : MonoBehaviour
     //Muzzle Flashing
     public Image muzzleFlashImage;
     public Sprite[] flashing;
-    
-    
+
+    //Aim Controls
+    public Vector3 normalLocalPosition;
+    public Vector3 aimingLocalPosition;
+
+    public float aimSmoothing = 10;
 
 
     private void Start()
@@ -33,6 +38,7 @@ public class WeaponController : MonoBehaviour
     {
         if(Input.GetMouseButton(0) && _canFire && _currentAmmoInMag > 0) 
         {
+            DetermineAccuracy();
             _canFire = false;
             _currentAmmoInMag--;
             StartCoroutine(FireWeapon());
@@ -53,6 +59,17 @@ public class WeaponController : MonoBehaviour
             }
         }
     }
+
+    void DetermineAccuracy()
+    {
+        Vector3 target = normalLocalPosition;
+        if (Input.GetMouseButtonDown(1)) target = aimingLocalPosition;
+        Vector3 desiredPosition = Vector3.Lerp(transform.localPosition, target, Time.deltaTime * aimSmoothing);
+
+        transform.localPosition = desiredPosition;
+    }
+
+
 
     IEnumerator FireWeapon()
     {

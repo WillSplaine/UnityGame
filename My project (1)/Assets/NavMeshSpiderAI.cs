@@ -9,6 +9,8 @@ public class NavMeshSpiderAI : MonoBehaviour
     private Transform target;
     private Animator animator;
     private Transform targetAim;
+    public AudioSource spiderNoise;
+    public AudioSource spiderHiss;
 
     public float stoppingDistance = 5;
 
@@ -20,6 +22,7 @@ public class NavMeshSpiderAI : MonoBehaviour
         Reference();
         target = GameObject.FindGameObjectWithTag("PlayerC").transform;
         targetAim = GameObject.FindGameObjectWithTag("Player").transform;
+        
     }
 
     private void GoToTarget()
@@ -45,10 +48,12 @@ public class NavMeshSpiderAI : MonoBehaviour
         if (distanceToTarget <= stoppingDistance)
         {
             animator.SetBool("Attack2", true);
+         
         }
         else
         {
             animator.SetBool("Attack2", false);
+            
         }
     }
    
@@ -61,8 +66,26 @@ public class NavMeshSpiderAI : MonoBehaviour
             transform.LookAt(targetAim);
             transform.Rotate(0, 180, 0);
 
-
+            SFX();
             Attacking();
         
+        
+            
+}
+             
+
+   private void SFX()
+    {
+        float distanceToTarget = Vector3.Distance(transform.position, target.position);
+        if (distanceToTarget  >= 12f)
+        {
+            spiderHiss.enabled = false;
+            spiderNoise.enabled = true;
+        }
+        else
+        {
+            spiderHiss.enabled = true;
+            spiderNoise.enabled = false;
+        }
     }
 }
