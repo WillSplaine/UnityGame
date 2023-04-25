@@ -3509,8 +3509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62dca66662f154449be2b889496c0691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spiderNoise: {fileID: 4390393373348051773}
-  spiderHiss: {fileID: 1142929179180601251}
+  SpiderHiss: {fileID: 1142929179180601251}
+  SpiderSFXAud: {fileID: 4390393373348051773}
   stoppingDistance: 5
 --- !u!65 &-3602519781549230627
 BoxCollider:
@@ -3537,18 +3537,18 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 79afd0adbb3c4264a8bdd980a0381a3d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.708
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
-  Spatialize: 0
+  Spatialize: 1
   SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  Priority: 1
+  DopplerLevel: 5
+  MinDistance: 0.2
+  MaxDistance: 4000
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -3635,16 +3635,16 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.202
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 0.2
+  MaxDistance: 4000
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -3692,7 +3692,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.875
       inSlope: 0
       outSlope: 0
       tangentMode: 0
